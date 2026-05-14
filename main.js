@@ -8,80 +8,95 @@ const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
    ============================================================ */
 (function bgShader(){
   const canvas = document.getElementById('bg-shader');
-  const gl = canvas.getContext('webgl', { antialias:false, alpha:true, premultipliedAlpha:false });
-  if(!gl){ canvas.style.background = 'radial-gradient(ellipse at top,#1a1140,#05060a)'; return; }
+  if(!canvas) return;
+  const gl = canvas.getContext('webgl', { antialias:false, alpha:true, premultipliedAlpha:false })
+          || canvas.getContext('experimental-webgl');
+  if(!gl){ console.warn('[bg] WebGL unavailable, using CSS fallback'); return; }
 
   const vs = `
     attribute vec2 p;
-    void main(){ gl_Position = vec4(p,0.,1.); }
+    void main(){ gl_Position = vec4(p,0.0,1.0); }
   `;
   const fs = `
-    precision highp float;
+    precision mediump float;
     uniform vec2 u_res;
     uniform float u_t;
     uniform vec2 u_mouse;
     uniform float u_scroll;
 
-    // hash + noise
     float hash(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
     float noise(vec2 p){
       vec2 i=floor(p), f=fract(p);
-      float a=hash(i), b=hash(i+vec2(1,0)), c=hash(i+vec2(0,1)), d=hash(i+vec2(1,1));
-      vec2 u=f*f*(3.-2.*f);
+      float a=hash(i);
+      float b=hash(i+vec2(1.0,0.0));
+      float c=hash(i+vec2(0.0,1.0));
+      float d=hash(i+vec2(1.0,1.0));
+      vec2 u=f*f*(3.0-2.0*f);
       return mix(mix(a,b,u.x), mix(c,d,u.x), u.y);
     }
     float fbm(vec2 p){
-      float v=0., a=.5;
-      for(int i=0;i<5;i++){ v+=a*noise(p); p*=2.02; a*=.5; }
+      float v=0.0;
+      float a=0.5;
+      for(int i=0;i<5;i++){ v+=a*noise(p); p*=2.02; a*=0.5; }
       return v;
     }
 
     void main(){
-      vec2 uv = (gl_FragCoord.xy - .5*u_res) / u_res.y;
-      vec2 m  = (u_mouse - .5*u_res) / u_res.y;
+      vec2 uv = (gl_FragCoord.xy - 0.5*u_res) / u_res.y;
+      vec2 m  = (u_mouse - 0.5*u_res) / u_res.y;
 
-      float t = u_t * .08;
-      float scroll = u_scroll * .0008;
+      float t = u_t * 0.08;
+      float scroll = u_scroll * 0.0008;
 
-      // distorting field, pulled toward cursor
       vec2 q = uv * 1.4;
-      q += .35 * vec2(fbm(q + t), fbm(q - t + 3.7));
-      float dist = length(uv - m*.8);
-      q += (m - uv) * exp(-dist*2.0) * .25;
+      q += 0.35 * vec2(fbm(q + t), fbm(q - t + 3.7));
+      float dist = length(uv - m*0.8);
+      q += (m - uv) * exp(-dist*2.0) * 0.25;
       q.y += scroll;
 
-      float n = fbm(q*1.6 + t*.5);
+      float n = fbm(q*1.6 + t*0.5);
       n = pow(n, 1.4);
 
-      // palette
-      vec3 c1 = vec3(0.486, 0.361, 1.000); // #7c5cff
-      vec3 c2 = vec3(0.000, 0.898, 1.000); // #00e5ff
-      vec3 c3 = vec3(1.000, 0.361, 0.949); // #ff5cf2
-      vec3 col = mix(c1, c2, smoothstep(.2,.8,n));
-      col = mix(col, c3, smoothstep(.6,1., fbm(q*.8 - t)));
+      vec3 c1 = vec3(0.486, 0.361, 1.000);
+      vec3 c2 = vec3(0.000, 0.898, 1.000);
+      vec3 c3 = vec3(1.000, 0.361, 0.949);
+      vec3 col = mix(c1, c2, smoothstep(0.2, 0.8, n));
+      col = mix(col, c3, smoothstep(0.6, 1.0, fbm(q*0.8 - t)));
 
-      // vignette + darkness
-      float vig = smoothstep(1.2, .2, length(uv));
-      col *= vig * .55;
+      float vig = smoothstep(1.2, 0.2, length(uv));
+      col *= vig * 0.55;
 
-      // cursor glow
-      col += exp(-dist*4.0) * vec3(.5,.7,1.) * .25;
+      col += exp(-dist*4.0) * vec3(0.5,0.7,1.0) * 0.25;
 
-      // base bg
-      col = mix(vec3(0.02,0.024,0.04), col, .85);
+      col = mix(vec3(0.02,0.024,0.04), col, 0.85);
+      col += (hash(gl_FragCoord.xy + u_t) - 0.5) * 0.025;
 
-      // slight grain
-      col += (hash(gl_FragCoord.xy + u_t) - .5) * .025;
-
-      gl_FragColor = vec4(col, 1.);
+      gl_FragColor = vec4(col, 1.0);
     }
   `;
 
-  function sh(type, src){ const s=gl.createShader(type); gl.shaderSource(s,src); gl.compileShader(s); return s; }
+  function sh(type, src){
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if(!gl.getShaderParameter(s, gl.COMPILE_STATUS)){
+      console.error('[bg] shader compile failed:', gl.getShaderInfoLog(s));
+      return null;
+    }
+    return s;
+  }
+  const vsh = sh(gl.VERTEX_SHADER, vs);
+  const fsh = sh(gl.FRAGMENT_SHADER, fs);
+  if(!vsh || !fsh) return;
   const prog = gl.createProgram();
-  gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs));
-  gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs));
-  gl.linkProgram(prog); gl.useProgram(prog);
+  gl.attachShader(prog, vsh);
+  gl.attachShader(prog, fsh);
+  gl.linkProgram(prog);
+  if(!gl.getProgramParameter(prog, gl.LINK_STATUS)){
+    console.error('[bg] program link failed:', gl.getProgramInfoLog(prog));
+    return;
+  }
+  gl.useProgram(prog);
 
   const buf = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, buf);
@@ -98,10 +113,10 @@ const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let w=0,h=0,dpr=1;
   function resize(){
     dpr = Math.min(devicePixelRatio || 1, 1.6);
-    w = canvas.clientWidth = innerWidth;
-    h = canvas.clientHeight = innerHeight;
-    canvas.width  = w * dpr;
-    canvas.height = h * dpr;
+    w = innerWidth || 1280;
+    h = innerHeight || 720;
+    canvas.width  = Math.max(1, Math.floor(w * dpr));
+    canvas.height = Math.max(1, Math.floor(h * dpr));
     gl.viewport(0,0,canvas.width,canvas.height);
   }
   resize();
@@ -173,10 +188,17 @@ const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
    4.  Reveal-on-scroll + word split
    ============================================================ */
 (function reveal(){
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold:.12, rootMargin:'0px 0px -50px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  const items = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold:.08, rootMargin:'0px 0px -40px 0px' });
+    items.forEach(el => io.observe(el));
+  } else {
+    items.forEach(el => el.classList.add('in'));
+  }
+  // safety net: anything still hidden after 2.5s gets revealed
+  setTimeout(() => items.forEach(el => el.classList.add('in')), 2500);
 
   // hero title line stagger
   document.querySelectorAll('.hero-title .line').forEach((line, i) => {
@@ -247,13 +269,18 @@ function setupCanvas(canvas){
   function size(){
     dpr = Math.min(devicePixelRatio||1, 2);
     const r = canvas.getBoundingClientRect();
-    w = r.width; h = r.height;
-    canvas.width  = w * dpr;
-    canvas.height = h * dpr;
+    w = Math.max(1, r.width  || canvas.parentElement?.clientWidth  || 300);
+    h = Math.max(1, r.height || canvas.parentElement?.clientHeight || 200);
+    canvas.width  = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
     ctx.setTransform(dpr,0,0,dpr,0,0);
   }
   size();
-  new ResizeObserver(size).observe(canvas);
+  if('ResizeObserver' in window) new ResizeObserver(size).observe(canvas);
+  addEventListener('resize', size);
+  // re-measure once layout settles
+  setTimeout(size, 0);
+  setTimeout(size, 300);
   return {ctx, get w(){return w}, get h(){return h}};
 }
 
@@ -275,42 +302,50 @@ const scenes = {
   // 01 — orbiting nodes
   orbit({ctx,w,h,p,t}){
     ctx.clearRect(0,0,w,h);
-    const cx = w*(.5 + (p.x-.5)*.15);
-    const cy = h*(.5 + (p.y-.5)*.15);
-    for(let r=40;r<Math.max(w,h);r+=36){
+    const cx = w*(.5 + (p.x-.5)*.2);
+    const cy = h*(.5 + (p.y-.5)*.2);
+    for(let r=40;r<Math.max(w,h);r+=32){
       ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2);
-      ctx.strokeStyle = `rgba(124,92,255,${.04 + .12*Math.sin(t*.001 + r*.02)})`;
+      ctx.strokeStyle = `rgba(124,92,255,${.18 + .25*Math.sin(t*.001 + r*.02)})`;
       ctx.lineWidth = 1; ctx.stroke();
     }
-    for(let i=0;i<12;i++){
-      const ang = t*.0006 + i*(Math.PI*2/12);
-      const rad = 60 + i*14;
+    for(let i=0;i<14;i++){
+      const ang = t*.0008 + i*(Math.PI*2/14);
+      const rad = 50 + i*13;
       const x = cx + Math.cos(ang)*rad;
       const y = cy + Math.sin(ang)*rad;
-      const grad = ctx.createRadialGradient(x,y,0,x,y,18);
-      grad.addColorStop(0,'rgba(0,229,255,.9)');
+      const grad = ctx.createRadialGradient(x,y,0,x,y,22);
+      grad.addColorStop(0,'rgba(0,229,255,1)');
+      grad.addColorStop(.4,'rgba(0,229,255,.6)');
       grad.addColorStop(1,'rgba(0,229,255,0)');
       ctx.fillStyle = grad;
-      ctx.beginPath(); ctx.arc(x,y,18,0,Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(x,y,22,0,Math.PI*2); ctx.fill();
     }
+    // center glow
+    const cg = ctx.createRadialGradient(cx,cy,0,cx,cy,60);
+    cg.addColorStop(0,'rgba(255,92,242,.6)');
+    cg.addColorStop(1,'rgba(255,92,242,0)');
+    ctx.fillStyle = cg;
+    ctx.beginPath(); ctx.arc(cx,cy,60,0,Math.PI*2); ctx.fill();
   },
 
   // 02 — sine wave field
   wave({ctx,w,h,p,t}){
     ctx.clearRect(0,0,w,h);
-    const lines = 18;
+    const lines = 22;
     for(let i=0;i<lines;i++){
       ctx.beginPath();
       const yOff = (h/lines)*i;
-      for(let x=0;x<=w;x+=6){
+      for(let x=0;x<=w;x+=4){
         const k = x/w;
-        const amp = 22 + (p.x*40);
-        const y = yOff + Math.sin(k*8 + t*.002 + i*.3 + p.y*4) * amp * (.4 + p.x);
+        const amp = 26 + (p.x*48);
+        const y = yOff + Math.sin(k*8 + t*.002 + i*.3 + p.y*4) * amp * (.5 + p.x);
         x===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
       }
-      const a = .04 + .14 * Math.sin(t*.001 + i);
-      ctx.strokeStyle = `rgba(0,229,255,${a})`;
-      ctx.lineWidth = 1.2;
+      const a = .25 + .35 * Math.abs(Math.sin(t*.001 + i*.3));
+      const hueShift = i/lines;
+      ctx.strokeStyle = `rgba(${Math.round(124-hueShift*124)},${Math.round(92+hueShift*137)},${Math.round(255-hueShift*13)},${a})`;
+      ctx.lineWidth = 1.4;
       ctx.stroke();
     }
   },
@@ -319,40 +354,44 @@ const scenes = {
   grid({ctx,w,h,p,t}){
     ctx.clearRect(0,0,w,h);
     const hz = h*.45 + (p.y-.5)*40;
-    ctx.strokeStyle = 'rgba(124,92,255,.35)';
-    ctx.lineWidth = 1;
-    // horizontal
-    for(let i=1;i<14;i++){
-      const k = i/14;
-      const y = hz + Math.pow(k,2.4) * (h - hz);
-      ctx.globalAlpha = .15 + k*.45;
+    ctx.strokeStyle = 'rgba(0,229,255,.8)';
+    ctx.lineWidth = 1.1;
+    // horizontal scrolling grid
+    const speed = (t*.0006) % 1;
+    for(let i=0;i<18;i++){
+      const k = (i/18 + speed) % 1;
+      const y = hz + Math.pow(k,2.2) * (h - hz);
+      ctx.globalAlpha = .25 + k*.55;
       ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke();
     }
     // vertical converging
-    const vx = w*(.5 + (p.x-.5)*.2);
-    for(let i=-10;i<=10;i++){
-      ctx.globalAlpha = .25;
+    const vx = w*(.5 + (p.x-.5)*.25);
+    ctx.strokeStyle = 'rgba(124,92,255,.6)';
+    for(let i=-12;i<=12;i++){
+      ctx.globalAlpha = .35;
       ctx.beginPath();
-      ctx.moveTo(vx + i*30, hz);
-      ctx.lineTo(vx + i*180, h);
+      ctx.moveTo(vx + i*28, hz);
+      ctx.lineTo(vx + i*200, h);
       ctx.stroke();
     }
     ctx.globalAlpha = 1;
     // sun
-    const sg = ctx.createRadialGradient(vx,hz,0,vx,hz,140);
-    sg.addColorStop(0,'rgba(255,92,242,.7)');
+    const sg = ctx.createRadialGradient(vx,hz,0,vx,hz,160);
+    sg.addColorStop(0,'rgba(255,92,242,.85)');
+    sg.addColorStop(.5,'rgba(124,92,255,.4)');
     sg.addColorStop(1,'rgba(255,92,242,0)');
     ctx.fillStyle = sg;
-    ctx.beginPath(); ctx.arc(vx,hz,140,0,Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(vx,hz,160,0,Math.PI*2); ctx.fill();
   },
 
   // 04 — particle cloud
   particles({ctx,w,h,p,t,state}){
-    if(!state.pts){
-      state.pts = Array.from({length:90}, () => ({
+    if(!state.pts || state.lastW !== w){
+      state.lastW = w;
+      state.pts = Array.from({length:80}, () => ({
         x: Math.random()*w, y: Math.random()*h,
-        vx: (Math.random()-.5)*.3, vy:(Math.random()-.5)*.3,
-        r: 1 + Math.random()*2.2
+        vx: (Math.random()-.5)*.4, vy:(Math.random()-.5)*.4,
+        r: 1.4 + Math.random()*2.5
       }));
     }
     ctx.clearRect(0,0,w,h);
@@ -360,24 +399,28 @@ const scenes = {
     state.pts.forEach(pt => {
       const dx = mx - pt.x, dy = my - pt.y;
       const d2 = dx*dx + dy*dy;
-      const f = p.inside ? Math.min(1, 8000/(d2+200)) : 0;
-      pt.vx += dx*f*.0005; pt.vy += dy*f*.0005;
-      pt.vx *= .96; pt.vy *= .96;
-      pt.x += pt.vx + Math.sin(t*.001 + pt.y*.01)*.1;
-      pt.y += pt.vy + Math.cos(t*.001 + pt.x*.01)*.1;
+      const f = p.inside ? Math.min(1.2, 12000/(d2+200)) : 0;
+      pt.vx += dx*f*.0006; pt.vy += dy*f*.0006;
+      pt.vx *= .94; pt.vy *= .94;
+      pt.x += pt.vx + Math.sin(t*.001 + pt.y*.01)*.15;
+      pt.y += pt.vy + Math.cos(t*.001 + pt.x*.01)*.15;
       if(pt.x<0) pt.x+=w; if(pt.x>w) pt.x-=w;
       if(pt.y<0) pt.y+=h; if(pt.y>h) pt.y-=h;
-      ctx.fillStyle = `rgba(0,229,255,${.4 + f*.6})`;
+      const a = .7 + f*.3;
+      ctx.fillStyle = `rgba(0,229,255,${a})`;
+      ctx.shadowColor = 'rgba(0,229,255,.6)';
+      ctx.shadowBlur = 8;
       ctx.beginPath(); ctx.arc(pt.x,pt.y,pt.r,0,Math.PI*2); ctx.fill();
     });
+    ctx.shadowBlur = 0;
     // connecting lines
-    ctx.strokeStyle = 'rgba(124,92,255,.18)';
-    ctx.lineWidth = .6;
+    ctx.strokeStyle = 'rgba(124,92,255,.5)';
+    ctx.lineWidth = .8;
     for(let i=0;i<state.pts.length;i++){
       for(let j=i+1;j<state.pts.length;j++){
         const a=state.pts[i], b=state.pts[j];
         const d = Math.hypot(a.x-b.x, a.y-b.y);
-        if(d<80){ ctx.globalAlpha = 1 - d/80; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
+        if(d<90){ ctx.globalAlpha = (1 - d/90)*.8; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
       }
     }
     ctx.globalAlpha = 1;
@@ -492,24 +535,29 @@ const scenes = {
 
 (function mountCanvases(){
   const all = document.querySelectorAll('[data-canvas]');
-  // run only when visible
+  // default: assume visible so first paint happens
   const visible = new WeakSet();
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => e.isIntersecting ? visible.add(e.target) : visible.delete(e.target));
-  }, {threshold:.05});
+  all.forEach(c => visible.add(c));
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => e.isIntersecting ? visible.add(e.target) : visible.delete(e.target));
+    }, {threshold:0, rootMargin:'200px'});
+    all.forEach(canvas => io.observe(canvas));
+  }
 
   all.forEach(canvas => {
-    io.observe(canvas);
     const kind = canvas.dataset.canvas;
     const render = scenes[kind];
-    if(!render) return;
+    if(!render){ console.warn('[canvas] unknown scene:', kind); return; }
     const env = setupCanvas(canvas);
     const p = trackPointer(canvas);
     const state = {};
     function loop(t){
-      if(visible.has(canvas) && !reduceMotion){
-        render({ ctx:env.ctx, w:env.w, h:env.h, p, t, state });
-      }
+      try{
+        if(visible.has(canvas) && !reduceMotion && env.w>0 && env.h>0){
+          render({ ctx:env.ctx, w:env.w, h:env.h, p, t, state });
+        }
+      } catch(err){ console.error('[canvas '+kind+']', err); }
       requestAnimationFrame(loop);
     }
     requestAnimationFrame(loop);
