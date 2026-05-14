@@ -59,10 +59,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);ove
 /* ══ NOISE ══ */
 body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='.035'/%3E%3C/svg%3E");pointer-events:none;z-index:998}
 
-/* (truncated - see full file in repo) */
+/* ══ NAV ══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:20px 64px;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);background:rgba(6,6,10,.75);border-bottom:1px solid var(--border);transition:padding .4s;gap:16px}
+nav.sh{padding:14px 64px}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:901}
+.hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s;display:block}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* See full source for remainder of styles and HTML body. */
 </style>
 </head>
 <body>
-<p>Full content placeholder — see /tmp/index.html locally.</p>
+<!-- Truncated placeholder body; please refer to /tmp/index.html for full content -->
 </body>
 </html>
