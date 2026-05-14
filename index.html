@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#05060a" />
+  <title>FutureFlow — AI, который двигает бизнес</title>
+  <meta name="description" content="FutureFlow строит AI-агентов и автоматизации, которые работают за вас 24/7." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <noscript><style>.reveal,.word[data-split],.line .word[data-split]{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <canvas id="bg-shader" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><div class="cursor-dot"></div><div class="cursor-ring"></div></div>
+
+  <header class="nav">
+    <a class="brand" href="#top" data-magnetic>
+      <span class="brand-mark">
+        <svg viewBox="0 0 40 40" width="28" height="28" aria-hidden="true">
+          <defs>
+            <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#7c5cff"/>
+              <stop offset="100%" stop-color="#00e5ff"/>
+            </linearGradient>
+          </defs>
+          <path d="M6 30 L20 6 L34 30 Z" fill="none" stroke="url(#lg)" stroke-width="2"/>
+          <circle cx="20" cy="22" r="4" fill="url(#lg)"/>
+        </svg>
+      </span>
+      <span>FutureFlow</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#services" data-magnetic>Услуги</a>
+      <a href="#cases" data-magnetic>Кейсы</a>
+      <a href="#process" data-magnetic>Процесс</a>
+      <a href="#contact" data-magnetic>Контакты</a>
+    </nav>
+    <a href="#contact" class="cta-pill" data-magnetic>
+      <span>Начать проект</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="hero-tag reveal">
+        <span class="dot"></span> AI · автоматизация · 2026
+      </div>
+
+      <h1 class="hero-title">
+        <span class="line"><span class="word" data-split>Будущее</span></span>
+        <span class="line"><span class="word grad" data-split>не ждёт.</span></span>
+        <span class="line"><span class="word" data-split>Оно</span> <span class="word grad" data-split>течёт.</span></span>
+      </h1>
+
+      <p class="hero-sub reveal">
+        Мы строим AI-агентов, которые отвечают клиентам, закрывают сделки и оптимизируют операционку.
+        Пока вы спите — ваш бизнес ускоряется.
+      </p>
+
+      <div class="hero-actions reveal">
+        <a href="#contact" class="btn btn-primary" data-magnetic>
+          <span>Запустить поток</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#cases" class="btn btn-ghost" data-magnetic>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.4"/><path d="M5 4.5v5l4-2.5-4-2.5z" fill="currentColor"/></svg>
+          <span>Смотреть кейсы</span>
+        </a>
+      </div>
+
+      <div class="hero-scroll reveal">
+        <span>scroll</span>
+        <span class="hero-scroll-line"></span>
+      </div>
+
+      <div class="hero-stats reveal">
+        <div><b data-count="427">0</b><i>проектов запущено</i></div>
+        <div><b data-count="93">0</b><i>% retention клиентов</i></div>
+        <div><b data-count="24">0</b><i>часа на MVP</i></div>
+      </div>
+    </section>
+
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>OpenAI</span><span>•</span><span>Anthropic</span><span>•</span><span>Vercel</span><span>•</span><span>Supabase</span><span>•</span><span>Stripe</span><span>•</span><span>n8n</span><span>•</span><span>Pinecone</span><span>•</span><span>HubSpot</span><span>•</span>
+        <span>OpenAI</span><span>•</span><span>Anthropic</span><span>•</span><span>Vercel</span><span>•</span><span>Supabase</span><span>•</span><span>Stripe</span><span>•</span><span>n8n</span><span>•</span><span>Pinecone</span><span>•</span><span>HubSpot</span><span>•</span>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="section-head">
+        <span class="eyebrow reveal">/ услуги</span>
+        <h2 class="reveal">Четыре потока, которые приносят результат</h2>
+      </div>
+
+      <div class="cards">
+        <article class="card tilt" data-tilt>
+          <canvas class="card-canvas" data-canvas="orbit"></canvas>
+          <div class="card-body">
+            <div class="card-num">01</div>
+            <h3>AI-агенты поддержки</h3>
+            <p>24/7 чат-агенты, которые знают ваш продукт лучше менеджеров. Снижают нагрузку на саппорт на 70%.</p>
+            <span class="card-arrow">→</span>
+          </div>
+        </article>
+
+        <article class="card tilt" data-tilt>
+          <canvas class="card-canvas" data-canvas="wave"></canvas>
+          <div class="card-body">
+            <div class="card-num">02</div>
+            <h3>Sales-автоматизация</h3>
+            <p>Квалифицируем лиды, бронируем встречи, дожимаем сделки. Pipeline движется без ручного труда.</p>
+            <span class="card-arrow">→</span>
+          </div>
+        </article>
+
+        <article class="card tilt" data-tilt>
+          <canvas class="card-canvas" data-canvas="grid"></canvas>
+          <div class="card-body">
+            <div class="card-num">03</div>
+            <h3>Контент-машины</h3>
+            <p>Генерация SEO-контента, видео-сценариев и SMM-постов под ваш tone of voice. Тонна выхода — без выгорания.</p>
+            <span class="card-arrow">→</span>
+          </div>
+        </article>
+
+        <article class="card tilt" data-tilt>
+          <canvas class="card-canvas" data-canvas="particles"></canvas>
+          <div class="card-body">
+            <div class="card-num">04</div>
+            <h3>Кастомные AI-продукты</h3>
+            <p>От RAG-поиска по корпоративной базе до агентов с реальными action-tools. Делаем под вашу задачу с нуля.</p>
+            <span class="card-arrow">→</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cases" id="cases">
+      <div class="section-head">
+        <span class="eyebrow reveal">/ кейсы</span>
+        <h2 class="reveal">Результаты, а не обещания</h2>
+      </div>
+
+      <div class="case-row reveal">
+        <div class="case-meta">
+          <span class="case-tag">e-commerce</span>
+          <h3>Atelier Nord</h3>
+          <p>AI-консультант увеличил конверсию каталога в заказ на <b>+38%</b> за 6 недель.</p>
+        </div>
+        <div class="case-visual">
+          <canvas data-canvas="hero-orb"></canvas>
+        </div>
+      </div>
+
+      <div class="case-row reverse reveal">
+        <div class="case-meta">
+          <span class="case-tag">fintech</span>
+          <h3>Klink Capital</h3>
+          <p>Автоматизация скоринга и онбординга сократила цикл сделки с <b>14 → 3 дней</b>.</p>
+        </div>
+        <div class="case-visual">
+          <canvas data-canvas="hero-lines"></canvas>
+        </div>
+      </div>
+
+      <div class="case-row reveal">
+        <div class="case-meta">
+          <span class="case-tag">SaaS</span>
+          <h3>Pulse Analytics</h3>
+          <p>AI-агент собирает инсайты по 12 каналам в сутки и присылает дайджест в Slack. <b>−18 ч/неделю</b> ручной работы.</p>
+        </div>
+        <div class="case-visual">
+          <canvas data-canvas="hero-mesh"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="section-head">
+        <span class="eyebrow reveal">/ процесс</span>
+        <h2 class="reveal">От идеи до production за 4 шага</h2>
+      </div>
+      <div class="process-grid">
+        <div class="step reveal"><b>01</b><h4>Discovery</h4><p>Изучаем процессы, находим узкие места и точки, где AI даёт максимальный ROI.</p></div>
+        <div class="step reveal"><b>02</b><h4>Prototype</h4><p>За 48 часов собираем рабочий прототип. Никаких слайдов — живой продукт.</p></div>
+        <div class="step reveal"><b>03</b><h4>Integrate</h4><p>Подключаем к вашим инструментам: CRM, базы, мессенджеры, аналитика.</p></div>
+        <div class="step reveal"><b>04</b><h4>Scale</h4><p>Поддерживаем, обучаем модель на ваших данных, масштабируем под нагрузку.</p></div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="cta-inner">
+        <h2 class="reveal">Готовы запустить свой <span class="grad">поток</span>?</h2>
+        <p class="reveal">Расскажите о задаче — соберём прототип за 48 часов. Бесплатно, без обязательств.</p>
+        <form class="cta-form reveal" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Отправлено ✓';">
+          <input type="email" required placeholder="your@email.com" autocomplete="email" />
+          <button type="submit" data-magnetic>Получить звонок</button>
+        </form>
+        <div class="cta-mail reveal">или просто напишите: <a href="mailto:hello@futureflow.ai">hello@futureflow.ai</a></div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2026 FutureFlow</div>
+      <div class="footer-links">
+        <a href="#" data-magnetic>Telegram</a>
+        <a href="#" data-magnetic>X / Twitter</a>
+        <a href="#" data-magnetic>LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="./main.js" defer></script>
+</body>
+</html>
