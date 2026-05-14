@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вакансии — FutureFlow</title>
+<meta name="description" content="Открытые вакансии в FutureFlow. Присоединяйтесь к команде AI-автоматизации, разработки сайтов и SEO.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#06060a">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="FutureFlow">
+<meta property="og:title" content="Вакансии — FutureFlow">
+<meta property="og:description" content="Открытые вакансии в FutureFlow.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='8' width='16' height='16' rx='3' stroke='%234A86D8' stroke-width='2' fill='none'/%3E%3Cg stroke='%234A86D8' stroke-width='1.8' stroke-linecap='round'%3E%3Cline x1='12' y1='4' x2='12' y2='8'/%3E%3Cline x1='16' y1='4' x2='16' y2='8'/%3E%3Cline x1='20' y1='4' x2='20' y2='8'/%3E%3Cline x1='12' y1='24' x2='12' y2='28'/%3E%3Cline x1='16' y1='24' x2='16' y2='28'/%3E%3Cline x1='20' y1='24' x2='20' y2='28'/%3E%3Cline x1='4' y1='12' x2='8' y2='12'/%3E%3Cline x1='4' y1='16' x2='8' y2='16'/%3E%3Cline x1='4' y1='20' x2='8' y2='20'/%3E%3Cline x1='24' y1='12' x2='28' y2='12'/%3E%3Cline x1='24' y1='16' x2='28' y2='16'/%3E%3Cline x1='24' y1='20' x2='28' y2='20'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #06060a;
+  --s1: #0e0e18;
+  --s2: #141422;
+  --s3: #1a1a2e;
+  --brand: #4A86D8;
+  --brand2: #6fa3e8;
+  --brand3: #2d6abf;
+  --acc1: #38d9b0;
+  --acc2: #f7a23a;
+  --acc3: #e45c8a;
+  --acc4: #9b7ff4;
+  --text: #eeeef8;
+  --muted: rgba(238,238,248,0.48);
+  --dim: rgba(238,238,248,0.2);
+  --border: rgba(255,255,255,0.06);
+  --border2: rgba(74,134,216,0.25);
+  --grad: linear-gradient(135deg, #4A86D8 0%, #38d9b0 100%);
+  --grad2: linear-gradient(135deg, #4A86D8 0%, #9b7ff4 100%);
+  --grad3: linear-gradient(135deg, #f7a23a 0%, #e45c8a 100%);
+  --radius: 16px;
+  --radius2: 24px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;cursor:inherit}
+body{cursor:default}
+a,button,[role="button"]{cursor:pointer !important}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
+
+body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='.035'/%3E%3C/svg%3E");pointer-events:none;z-index:998}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:20px 64px;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);background:rgba(6,6,10,.75);border-bottom:1px solid var(--border);transition:padding .4s}
+nav.sh{padding:14px 64px}
+.logo-svg{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-svg svg{width:32px;height:32px}
+.logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.3px;color:var(--text)}
+.logo-text span{color:var(--brand)}
+.nav-back{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border:1px solid var(--border);border-radius:100px;color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;transition:all .3s}
+.nav-back:hover{border-color:var(--border2);color:var(--text);background:rgba(74,134,216,.08)}
+.nav-back svg{width:14px;height:14px}
+
+/* HERO */
+#hero{min-height:88vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:140px 64px 80px;text-align:center}
+.h-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);animation:flt 10s ease-in-out infinite}
+.o1{width:700px;height:700px;background:radial-gradient(circle,rgba(74,134,216,.22) 0%,transparent 70%);top:-250px;left:-200px}
+.o2{width:550px;height:550px;background:radial-gradient(circle,rgba(56,217,176,.16) 0%,transparent 70%);bottom:-150px;right:-80px;animation-delay:-4s}
+.o3{width:400px;height:400px;background:radial-gradient(circle,rgba(247,162,58,.10) 0%,transparent 70%);top:45%;left:55%;animation-delay:-7s}
+@keyframes flt{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(25px,-25px) scale(1.04)}66%{transform:translate(-18px,18px) scale(.97)}}
+.h-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(74,134,216,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(74,134,216,.04) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,black,transparent)}
+.h-content{position:relative;z-index:10;max-width:920px;margin:0 auto}
+.h-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border:1px solid rgba(74,134,216,.38);border-radius:100px;font-size:12px;color:var(--brand2);font-weight:500;margin-bottom:32px;background:rgba(74,134,216,.08);animation:fu .8s ease both}
+.h-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--acc1);animation:pls 2s infinite}
+@keyframes pls{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+.h-title{font-family:'Syne',sans-serif;font-size:clamp(38px,6.5vw,76px);font-weight:800;line-height:1.05;letter-spacing:-3px;margin-bottom:24px;animation:fu .8s ease .1s both}
+.h-title span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.h-sub{font-size:18px;line-height:1.72;color:var(--muted);max-width:640px;margin:0 auto 44px;font-weight:300;animation:fu .8s ease .2s both}
+.h-acts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fu .8s ease .28s both}
+.btn-p{padding:15px 34px;background:var(--brand);border:none;border-radius:100px;color:#fff;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .3s;box-shadow:0 0 36px rgba(74,134,216,.38);position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px}
+.btn-p::after{content:'';position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.12),transparent);pointer-events:none}
+.btn-p:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 8px 52px rgba(74,134,216,.55)}
+.btn-g{padding:15px 34px;border:1px solid var(--border2);border-radius:100px;color:var(--text);font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;transition:border-color .3s,background .3s;display:inline-flex;align-items:center;gap:10px}
+.btn-g:hover{border-color:rgba(74,134,216,.5);background:rgba(74,134,216,.09)}
+@keyframes fu{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+.h-stats{display:flex;gap:60px;justify-content:center;margin-top:64px;padding-top:48px;border-top:1px solid var(--border);animation:fu .8s ease .38s both;flex-wrap:wrap}
+.s-num{font-family:'Syne',sans-serif;font-size:42px;font-weight:800;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.s-lbl{font-size:12px;color:var(--muted);margin-top:7px;font-weight:400;letter-spacing:.3px}
+
+/* SECTION */
+.sec{padding:100px 64px;position:relative}
+.sec-inner{max-width:1180px;margin:0 auto}
+.sec-lbl{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;color:var(--brand);margin-bottom:18px}
+.sec-lbl::before{content:'';width:18px;height:1px;background:var(--brand)}
+.sec-h{font-family:'Syne',sans-serif;font-size:clamp(28px,3.6vw,46px);font-weight:800;line-height:1.14;letter-spacing:-1.8px;margin-bottom:18px}
+.sec-h span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sec-sub{font-size:16px;color:var(--muted);line-height:1.72;font-weight:300;max-width:640px;margin-bottom:56px}
+
+/* ABOUT */
+#about{background:var(--s1)}
+.about-card{background:linear-gradient(135deg,rgba(74,134,216,.06),rgba(56,217,176,.04));border:1px solid var(--border);border-radius:var(--radius2);padding:48px 52px;display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
+.about-icon{width:88px;height:88px;border-radius:22px;background:rgba(74,134,216,.14);display:flex;align-items:center;justify-content:center;font-size:38px;flex-shrink:0}
+.about-text p{font-size:16px;line-height:1.78;color:var(--muted);font-weight:300}
+.about-text p strong{color:var(--text);font-weight:600}
+.about-text p a{color:var(--brand2);text-decoration:none;border-bottom:1px solid rgba(111,163,232,.3);transition:border-color .3s}
+.about-text p a:hover{border-color:var(--brand2)}
+
+/* CARD GRIDS (tasks / expectations) */
+.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.feat-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);padding:32px 30px;transition:border-color .3s,background .3s,transform .3s;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.feat-card:hover{border-color:var(--border2);background:var(--s2);transform:translateY(-3px)}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.feat-card:hover::before{transform:scaleX(1)}
+.fc-num{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--brand)}
+.fc-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;letter-spacing:-.3px;line-height:1.35}
+.fc-desc{font-size:13.5px;color:var(--muted);line-height:1.7;font-weight:300}
+
+#tasks{background:var(--bg)}
+#expect{background:var(--s1)}
+
+/* COMMISSION (highlight section) */
+#money{background:var(--bg)}
+.money-hero{background:linear-gradient(135deg,rgba(56,217,176,.08),rgba(74,134,216,.06));border:1px solid rgba(56,217,176,.2);border-radius:var(--radius2);padding:48px 52px;text-align:center;margin-bottom:36px;position:relative;overflow:hidden}
+.money-hero::before{content:'';position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(56,217,176,.18) 0%,transparent 70%);pointer-events:none}
+.money-pct{font-family:'Syne',sans-serif;font-size:clamp(72px,12vw,140px);font-weight:800;line-height:1;letter-spacing:-5px;background:linear-gradient(135deg,#38d9b0,#4A86D8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative;z-index:1}
+.money-tag{font-family:'Syne',sans-serif;font-size:18px;font-weight:600;color:var(--text);margin-top:12px;position:relative;z-index:1;letter-spacing:-.3px}
+.money-tag span{color:var(--acc1)}
+.money-note{font-size:13.5px;color:var(--muted);margin-top:14px;font-weight:300;position:relative;z-index:1;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.6}
+.examples{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ex-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);padding:30px 28px;transition:border-color .3s,background .3s,transform .3s;text-align:center;position:relative;overflow:hidden}
+.ex-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.ex-card.popular{border-color:rgba(56,217,176,.3);background:linear-gradient(180deg,rgba(56,217,176,.05),transparent)}
+.ex-card.popular::before{content:'Хит';position:absolute;top:14px;right:14px;padding:3px 11px;background:rgba(56,217,176,.18);color:var(--acc1);border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.ex-cat{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.8px;color:var(--brand);margin-bottom:14px}
+.ex-deal{font-family:'Syne',sans-serif;font-size:24px;font-weight:700;color:var(--muted);letter-spacing:-.5px;margin-bottom:6px;text-decoration:line-through;text-decoration-color:rgba(238,238,248,.18)}
+.ex-arrow{font-size:14px;color:var(--brand);margin:6px 0;font-weight:500}
+.ex-comm{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;letter-spacing:-1.5px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.ex-lbl{font-size:11.5px;color:var(--muted);margin-top:8px;letter-spacing:.5px}
+
+/* CONDITIONS LIST */
+#conditions{background:var(--s1)}
+.cond-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.cond{display:flex;gap:16px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 26px;transition:border-color .3s,background .3s}
+.cond:hover{border-color:var(--border2);background:var(--s2)}
+.cond-ico{width:40px;height:40px;min-width:40px;border-radius:11px;background:rgba(74,134,216,.12);display:flex;align-items:center;justify-content:center;color:var(--brand);flex-shrink:0}
+.cond-ico svg{width:20px;height:20px}
+.cond-body{flex:1;min-width:0}
+.cond-title{font-family:'Syne',sans-serif;font-size:14.5px;font-weight:700;letter-spacing:-.2px;margin-bottom:5px;line-height:1.3}
+.cond-desc{font-size:13px;color:var(--muted);line-height:1.65;font-weight:300}
+
+/* CTA */
+#cta{background:var(--bg)}
+.cta-box{background:var(--s2);border-radius:32px;padding:84px 72px;border:1px solid var(--border);text-align:center;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(74,134,216,.18) 0%,transparent 70%);pointer-events:none}
+.cta-box::after{content:'';position:absolute;bottom:-150px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(56,217,176,.1) 0%,transparent 70%);pointer-events:none}
+.cta-title{font-family:'Syne',sans-serif;font-size:clamp(30px,4.4vw,52px);font-weight:800;letter-spacing:-2px;line-height:1.1;margin-bottom:18px;position:relative;z-index:1}
+.cta-title span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cta-sub{font-size:16px;color:var(--muted);margin-bottom:40px;font-weight:300;position:relative;z-index:1;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
+.cta-acts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.cta-contacts{display:flex;justify-content:center;gap:36px;margin-top:48px;padding-top:40px;border-top:1px solid var(--border);flex-wrap:wrap;position:relative;z-index:1}
+.cc-item{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;transition:transform .3s}
+.cc-item:hover{transform:translateY(-2px)}
+.cc-ico{width:44px;height:44px;border-radius:12px;background:rgba(74,134,216,.1);display:flex;align-items:center;justify-content:center;color:var(--brand)}
+.cc-ico svg{width:20px;height:20px}
+.cc-lbl{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:3px}
+.cc-val{font-size:14px;font-weight:500}
+
+/* FOOTER */
+footer{background:var(--s1);border-top:1px solid var(--border);padding:40px 64px;text-align:center}
+.ft-copy{font-size:12px;color:var(--dim);line-height:1.7}
+.ft-copy a{color:var(--muted);text-decoration:none;transition:color .3s}
+.ft-copy a:hover{color:var(--brand)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .7s ease,transform .7s ease}
+.rv.vi{opacity:1;transform:none}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(74,134,216,.3);border-radius:3px}
+
+/* THEME TOGGLE */
+.theme-toggle-wrap{display:flex;align-items:center;gap:8px}
+.theme-toggle{width:44px;height:24px;background:var(--s2);border:1px solid var(--border2);border-radius:100px;cursor:pointer;position:relative;transition:background .3s,border-color .3s;flex-shrink:0;display:flex;align-items:center;padding:2px}
+.theme-toggle::after{content:'';width:18px;height:18px;border-radius:50%;background:var(--brand);transition:transform .3s,background .3s;box-shadow:0 1px 4px rgba(0,0,0,.2);flex-shrink:0}
+.theme-toggle:hover{border-color:rgba(74,134,216,.55)}
+.theme-icon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:var(--text);transition:opacity .3s,color .3s}
+.theme-icon svg{width:100%;height:100%;display:block}
+.theme-icon.moon{opacity:1;color:var(--text)}
+.theme-icon.sun{opacity:.4;color:var(--muted)}
+
+/* LIGHT THEME */
+[data-theme="light"]{
+  --bg:#f0f2f8;
+  --s1:#e8eaf4;
+  --s2:#dfe2f0;
+  --s3:#d6d9eb;
+  --brand:#2d6abf;
+  --brand2:#1a55a8;
+  --brand3:#4a86d8;
+  --acc1:#0d9e85;
+  --acc2:#d4860a;
+  --acc3:#c0345e;
+  --text:#0f1020;
+  --muted:rgba(15,16,32,0.55);
+  --dim:rgba(15,16,32,0.35);
+  --border:rgba(0,0,0,0.08);
+  --border2:rgba(45,106,191,0.3);
+  --grad:linear-gradient(135deg,#2d6abf 0%,#0d9e85 100%);
+  --grad2:linear-gradient(135deg,#2d6abf 0%,#7b5cf0 100%);
+  --grad3:linear-gradient(135deg,#d4860a 0%,#c0345e 100%);
+}
+[data-theme="light"] body::after{opacity:.015}
+[data-theme="light"] nav{background:rgba(240,242,248,0.85)}
+[data-theme="light"] .nav-back{color:var(--muted)}
+[data-theme="light"] .nav-back:hover{color:var(--text);background:rgba(45,106,191,.08);border-color:rgba(45,106,191,.4)}
+[data-theme="light"] .o1{background:radial-gradient(circle,rgba(45,106,191,.22) 0%,transparent 70%)}
+[data-theme="light"] .o2{background:radial-gradient(circle,rgba(13,158,133,.16) 0%,transparent 70%)}
+[data-theme="light"] .o3{background:radial-gradient(circle,rgba(212,134,10,.12) 0%,transparent 70%)}
+[data-theme="light"] .h-grid{background-image:linear-gradient(rgba(45,106,191,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(45,106,191,.06) 1px,transparent 1px)}
+[data-theme="light"] .h-badge{background:rgba(45,106,191,.08);border-color:rgba(45,106,191,.35);color:var(--brand2)}
+[data-theme="light"] .h-title span,
+[data-theme="light"] .sec-h span,
+[data-theme="light"] .s-num,
+[data-theme="light"] .ex-comm,
+[data-theme="light"] .cta-title span{
+  background:linear-gradient(135deg,#1a55a8 0%,#0d9e85 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+[data-theme="light"] .money-pct{
+  background:linear-gradient(135deg,#0d9e85 0%,#1a55a8 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+[data-theme="light"] .btn-p{color:#fff;box-shadow:0 0 36px rgba(45,106,191,.32)}
+[data-theme="light"] .btn-p:hover{box-shadow:0 8px 52px rgba(45,106,191,.5)}
+[data-theme="light"] .btn-g:hover{border-color:rgba(45,106,191,.5);background:rgba(45,106,191,.08)}
+[data-theme="light"] .feat-card{background:#e8eaf4}
+[data-theme="light"] .feat-card:hover{background:#dfe2f0}
+[data-theme="light"] .fc-num{color:var(--brand2)}
+[data-theme="light"] .about-card{background:linear-gradient(135deg,rgba(45,106,191,.07),rgba(13,158,133,.05));border-color:rgba(45,106,191,.18)}
+[data-theme="light"] .about-icon{background:rgba(45,106,191,.14)}
+[data-theme="light"] .about-icon svg{stroke:#1a55a8}
+[data-theme="light"] .about-text p a{color:var(--brand2);border-bottom-color:rgba(26,85,168,.35)}
+[data-theme="light"] .about-text p a:hover{border-bottom-color:var(--brand2)}
+[data-theme="light"] .money-hero{background:linear-gradient(135deg,rgba(13,158,133,.10),rgba(45,106,191,.07));border-color:rgba(13,158,133,.28)}
+[data-theme="light"] .money-hero::before{background:radial-gradient(ellipse,rgba(13,158,133,.20) 0%,transparent 70%)}
+[data-theme="light"] .money-tag span{color:#0d7d68}
+[data-theme="light"] .ex-card{background:#e8eaf4}
+[data-theme="light"] .ex-card.popular{border-color:rgba(13,158,133,.32);background:linear-gradient(180deg,rgba(13,158,133,.07),transparent)}
+[data-theme="light"] .ex-card.popular::before{background:rgba(13,158,133,.18);color:#0d7d68}
+[data-theme="light"] .ex-cat{color:var(--brand2)}
+[data-theme="light"] .ex-deal{color:var(--muted);text-decoration-color:rgba(15,16,32,.22)}
+[data-theme="light"] .ex-arrow{color:var(--brand)}
+[data-theme="light"] .cond{background:#e8eaf4}
+[data-theme="light"] .cond:hover{background:#dfe2f0}
+[data-theme="light"] .cond-ico{background:rgba(45,106,191,.14);color:var(--brand2)}
+[data-theme="light"] .cta-box{background:#dfe2f0}
+[data-theme="light"] .cta-box::before{background:radial-gradient(circle,rgba(45,106,191,.22) 0%,transparent 70%)}
+[data-theme="light"] .cta-box::after{background:radial-gradient(circle,rgba(13,158,133,.14) 0%,transparent 70%)}
+[data-theme="light"] .cc-ico{background:rgba(45,106,191,.12);color:var(--brand2)}
+[data-theme="light"] footer{background:#e8eaf4}
+[data-theme="light"] .ft-copy a:hover{color:var(--brand2)}
+[data-theme="light"] ::-webkit-scrollbar-track{background:#f0f2f8}
+[data-theme="light"] ::-webkit-scrollbar-thumb{background:rgba(45,106,191,.25)}
+[data-theme="light"] .theme-toggle{background:rgba(45,106,191,.15)}
+[data-theme="light"] .theme-toggle::after{transform:translateX(20px)}
+[data-theme="light"] .theme-toggle:hover{border-color:rgba(45,106,191,.6)}
+[data-theme="light"] .theme-icon.moon{opacity:.4;color:var(--muted)}
+[data-theme="light"] .theme-icon.sun{opacity:1;color:var(--text)}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  nav{padding:18px 32px}
+  nav.sh{padding:12px 32px}
+  .sec{padding:88px 40px}
+  .examples{grid-template-columns:1fr;max-width:480px;margin:0 auto}
+}
+@media(max-width:900px){
+  .card-grid,.cond-list{grid-template-columns:1fr}
+  .about-card{grid-template-columns:1fr;padding:36px 32px;text-align:center;gap:24px}
+  .about-icon{margin:0 auto}
+}
+@media(max-width:800px){
+  nav{padding:14px 20px}
+  nav.sh{padding:10px 20px}
+  .nav-back{padding:8px 16px;font-size:12px}
+  .sec{padding:72px 20px}
+  #hero{padding:110px 20px 60px;min-height:auto}
+  .h-title{letter-spacing:-1.5px}
+  .h-sub{font-size:15px}
+  .h-stats{gap:24px}
+  .s-num{font-size:32px}
+  .about-card{padding:32px 24px}
+  .money-hero{padding:36px 24px}
+  .cta-box{padding:48px 24px}
+  .cta-contacts{gap:20px}
+  footer{padding:32px 20px}
+  .feat-card{padding:26px 24px}
+}
+@media(max-width:520px){
+  .h-acts,.cta-acts{flex-direction:column;align-items:stretch}
+  .btn-p,.btn-g{width:100%;justify-content:center;text-align:center;padding:14px 20px}
+  .h-stats{gap:18px;flex-wrap:wrap;justify-content:space-around}
+  .nav-back{padding:8px 12px;font-size:0;gap:0}
+  .nav-back svg{width:16px;height:16px}
+}
+</style>
+</head>
+<body>
+
+<nav id="topNav">
+  <a href="/" class="logo-svg">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="6" width="12" height="12" rx="2" stroke="#4A86D8" stroke-width="1.6"/>
+      <line x1="9" y1="2" x2="9" y2="6" stroke="#4A86D8" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="12" y1="2" x2="12" y2="6" stroke="#4A86D8" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="15" y1="2" x2="15" y2="6" stroke="#4A86D8" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="9" y1="18" x2="9" y2="22" stroke="#4A86D8" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="12" y1="18" x2="12" y2="22" stroke="#4A86D8" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="15" y1="18" x2="15" y2="22" stroke="#4A86D8" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="2" y1="9" x2="6" y2="9" stroke="#4A86D8" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="2" y1="12" x2="6" y2="12" stroke="#4A86D8" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="2" y1="15" x2="6" y2="15" stroke="#4A86D8" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="18" y1="9" x2="22" y2="9" stroke="#4A86D8" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="18" y1="12" x2="22" y2="12" stroke="#4A86D8" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="18" y1="15" x2="22" y2="15" stroke="#4A86D8" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+    <span class="logo-text">Future<span>Flow</span></span>
+  </a>
+  <div style="display:flex;align-items:center;gap:18px">
+    <a href="/" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      На главную
+    </a>
+    <div class="theme-toggle-wrap">
+      <span class="theme-icon moon" aria-hidden="true">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7Z"/>
+        </svg>
+      </span>
+      <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Переключить тему"></button>
+      <span class="theme-icon sun" aria-hidden="true">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="8" r="3"/>
+          <line x1="8" y1="1.5" x2="8" y2="3"/>
+          <line x1="8" y1="13" x2="8" y2="14.5"/>
+          <line x1="1.5" y1="8" x2="3" y2="8"/>
+          <line x1="13" y1="8" x2="14.5" y2="8"/>
+          <line x1="3.4" y1="3.4" x2="4.5" y2="4.5"/>
+          <line x1="11.5" y1="11.5" x2="12.6" y2="12.6"/>
+          <line x1="3.4" y1="12.6" x2="4.5" y2="11.5"/>
+          <line x1="11.5" y1="4.5" x2="12.6" y2="3.4"/>
+        </svg>
+      </span>
+    </div>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="h-bg">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+  </div>
+  <div class="h-grid"></div>
+  <div class="h-content">
+    <div class="h-badge">Открытая вакансия · Удалённо</div>
+    <h1 class="h-title">Менеджер по<br><span>привлечению клиентов</span></h1>
+    <p class="h-sub">Присоединяйтесь к FutureFlow и зарабатывайте <strong style="color:var(--text);font-weight:600">20% с каждой сделки</strong>. Без потолка, без офиса, без жёсткого графика — только результат.</p>
+    <div class="h-acts">
+      <a href="https://t.me/FutureFlowInc" target="_blank" rel="noopener" class="btn-p">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+        Откликнуться в Telegram
+      </a>
+      <a href="mailto:hello@futureflow.ru?subject=Вакансия%3A%20Менеджер%20по%20привлечению%20клиентов" class="btn-g">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Написать на почту
+      </a>
+    </div>
+
+    <div class="h-stats">
+      <div>
+        <div class="s-num">20%</div>
+        <div class="s-lbl">с каждой сделки</div>
+      </div>
+      <div>
+        <div class="s-num">∞</div>
+        <div class="s-lbl">без потолка дохода</div>
+      </div>
+      <div>
+        <div class="s-num">100%</div>
+        <div class="s-lbl">удалённо</div>
+      </div>
+      <div>
+        <div class="s-num">10</div>
+        <div class="s-lbl">рабочих дней до выплаты</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="sec-inner">
+    <div class="rv" style="text-align:center;margin-bottom:48px">
+      <div class="sec-lbl" style="justify-content:center">О компании</div>
+      <h2 class="sec-h">Кто мы и <span>что делаем</span></h2>
+    </div>
+    <div class="about-card rv">
+      <div class="about-icon">
+        <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#4A86D8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="18" y1="15" x2="22" y2="15"/></svg>
+      </div>
+      <div class="about-text">
+        <p><strong>FutureFlow</strong> — студия AI-автоматизации, разработки сайтов и SEO. Сайт: <a href="https://futureflow.ru" target="_blank" rel="noopener">futureflow.ru</a>. Мы создаём AI-ботов, голосовых ассистентов, делаем сайты и продвижение. Сейчас расширяем направление продаж и ищем партнёра, который будет приводить нам B2B-клиентов. Вас вдохновляет работа с современными технологиями — AI, автоматизация, разработка? Хотите продавать продукты, которые реально меняют бизнес клиента, и при этом сами решать, сколько и когда работать? Тогда эта вакансия для вас.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TASKS -->
+<section id="tasks" class="sec">
+  <div class="sec-inner">
+    <div class="rv">
+      <div class="sec-lbl">Ваши задачи</div>
+      <h2 class="sec-h">Что нужно <span>делать</span></h2>
+      <p class="sec-sub">Полный цикл B2B-продаж: от первого касания до подписанного договора и оплаты.</p>
+    </div>
+    <div class="card-grid">
+      <div class="feat-card rv">
+        <div class="fc-num">01 / Поиск</div>
+        <div class="fc-title">Активный поиск B2B-клиентов</div>
+        <div class="fc-desc">На услуги студии: AI-агенты, чат-боты, разработка сайтов, SEO, голосовые боты, CRM-интеграции.</div>
+      </div>
+      <div class="feat-card rv">
+        <div class="fc-num">02 / Квалификация</div>
+        <div class="fc-title">Первичная квалификация лидов</div>
+        <div class="fc-desc">Понять задачу клиента, оценить бюджет и сроки, отсечь нецелевые обращения на старте.</div>
+      </div>
+      <div class="feat-card rv">
+        <div class="fc-num">03 / Переговоры</div>
+        <div class="fc-title">Переговоры и презентация</div>
+        <div class="fc-desc">Проводите встречи, презентуете кейсы и решения. Готовые материалы и поддержка по технике — с моей стороны.</div>
+      </div>
+      <div class="feat-card rv">
+        <div class="fc-num">04 / Сопровождение</div>
+        <div class="fc-title">Сопровождение до оплаты</div>
+        <div class="fc-desc">Ведёте клиента до подписания договора и поступления оплаты на счёт студии.</div>
+      </div>
+      <div class="feat-card rv" style="grid-column:1/-1">
+        <div class="fc-num">05 / Каналы</div>
+        <div class="fc-title">Любые эффективные каналы привлечения</div>
+        <div class="fc-desc">Личная сеть, профильные форумы, тендерные площадки, нетворкинг — выбирайте то, что работает у вас лучше всего. Никаких жёстких скриптов.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPECTATIONS -->
+<section id="expect" class="sec">
+  <div class="sec-inner">
+    <div class="rv">
+      <div class="sec-lbl">Наши ожидания</div>
+      <h2 class="sec-h">Кого мы <span>ищем</span></h2>
+      <p class="sec-sub">Самостоятельного партнёра по продажам, а не сотрудника на ставке. Технику закрываю я — вам нужно уметь продавать.</p>
+    </div>
+    <div class="card-grid">
+      <div class="feat-card rv">
+        <div class="fc-num">Опыт</div>
+        <div class="fc-title">B2B-продажи от 1 года</div>
+        <div class="fc-desc">Желательно — в IT, digital, SaaS или рекламе. Опыт продажи сложных услуг ценится особенно.</div>
+      </div>
+      <div class="feat-card rv">
+        <div class="fc-num">Понимание</div>
+        <div class="fc-title">Базовое понимание IT-услуг</div>
+        <div class="fc-desc">Глубоко погружаться не нужно — техническую часть закрываю я. Достаточно общего понимания.</div>
+      </div>
+      <div class="feat-card rv">
+        <div class="fc-num">Soft-skills</div>
+        <div class="fc-title">Коммуникация и переговоры</div>
+        <div class="fc-desc">Отличные коммуникативные навыки, умение убеждать, держать инициативу и доводить сделку до подписи.</div>
+      </div>
+      <div class="feat-card rv">
+        <div class="fc-num">Подход</div>
+        <div class="fc-title">Самостоятельность и фокус на результат</div>
+        <div class="fc-desc">Инициативность, ориентация на закрытие сделок, готовность работать удалённо и самостоятельно планировать своё время.</div>
+      </div>
+      <div class="feat-card rv" style="grid-column:1/-1">
+        <div class="fc-num">Оформление</div>
+        <div class="fc-title">Действующий статус ИП или самозанятого (НПД)</div>
+        <div class="fc-desc">Если статуса нет — открыть НПД через приложение «Мой налог» можно за 5 минут. Это нужно для официальной выплаты вознаграждения.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMISSION -->
+<section id="money" class="sec">
+  <div class="sec-inner">
+    <div class="rv" style="text-align:center;margin-bottom:48px">
+      <div class="sec-lbl" style="justify-content:center">Сколько вы заработаете</div>
+      <h2 class="sec-h">Ваша <span>комиссия</span></h2>
+      <p class="sec-sub" style="margin:0 auto">Прозрачная схема без потолка: 20% разово с каждой подписанной и оплаченной сделки.</p>
+    </div>
+
+    <div class="money-hero rv">
+      <div class="money-pct">20%</div>
+      <div class="money-tag">с каждой сделки. <span>Разово, по факту оплаты.</span></div>
+      <div class="money-note">Сколько привели клиентов — столько и заработали. Никаких лимитов, никаких «вилок» сверху.</div>
+    </div>
+
+    <div class="examples">
+      <div class="ex-card rv">
+        <div class="ex-cat">Сайт</div>
+        <div class="ex-deal">80 000 ₽</div>
+        <div class="ex-arrow">↓</div>
+        <div class="ex-comm">16 000 ₽</div>
+        <div class="ex-lbl">ваша комиссия</div>
+      </div>
+      <div class="ex-card popular rv">
+        <div class="ex-cat">AI-автоматизация</div>
+        <div class="ex-deal">300 000 ₽</div>
+        <div class="ex-arrow">↓</div>
+        <div class="ex-comm">60 000 ₽</div>
+        <div class="ex-lbl">ваша комиссия</div>
+      </div>
+      <div class="ex-card rv">
+        <div class="ex-cat">SEO-контракт на год</div>
+        <div class="ex-deal">600 000 ₽</div>
+        <div class="ex-arrow">↓</div>
+        <div class="ex-comm">120 000 ₽</div>
+        <div class="ex-lbl">ваша комиссия</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDITIONS -->
+<section id="conditions" class="sec">
+  <div class="sec-inner">
+    <div class="rv">
+      <div class="sec-lbl">Условия и преимущества</div>
+      <h2 class="sec-h">Почему это <span>выгодно</span></h2>
+      <p class="sec-sub">Свобода, прозрачность и реальная поддержка с моей стороны — никакой бюрократии и микроменеджмента.</p>
+    </div>
+    <div class="cond-list">
+      <div class="cond rv">
+        <div class="cond-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="cond-body">
+          <div class="cond-title">20% с каждой сделки</div>
+          <div class="cond-desc">Разово, по факту оплаты. Без потолка по доходу.</div>
+        </div>
+      </div>
+      <div class="cond rv">
+        <div class="cond-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="cond-body">
+          <div class="cond-title">Удалённо из любой точки мира</div>
+          <div class="cond-desc">Нет привязки к городу или часовому поясу — работаете оттуда, где вам комфортно.</div>
+        </div>
+      </div>
+      <div class="cond rv">
+        <div class="cond-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="cond-body">
+          <div class="cond-title">Свободный график</div>
+          <div class="cond-desc">Сами управляете своим временем и распределяете нагрузку под свои задачи.</div>
+        </div>
+      </div>
+      <div class="cond rv">
+        <div class="cond-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div class="cond-body">
+          <div class="cond-title">Никаких лимитов по доходу</div>
+          <div class="cond-desc">Сколько привели клиентов — столько и заработали. Прямая зависимость от ваших результатов.</div>
+        </div>
+      </div>
+      <div class="cond rv">
+        <div class="cond-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="cond-body">
+          <div class="cond-title">Поддержка с моей стороны</div>
+          <div class="cond-desc">Готовые кейсы, презентации, коммерческие материалы, помощь на переговорах по техническим вопросам.</div>
+        </div>
+      </div>
+      <div class="cond rv">
+        <div class="cond-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="cond-body">
+          <div class="cond-title">Перспектива роста</div>
+          <div class="cond-desc">При стабильных результатах обсуждаем расширение условий и эксклюзивные направления индивидуально.</div>
+        </div>
+      </div>
+      <div class="cond rv" style="grid-column:1/-1">
+        <div class="cond-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+        <div class="cond-body">
+          <div class="cond-title">Прозрачное оформление и быстрые выплаты</div>
+          <div class="cond-desc">Договор оказания услуг с самозанятым или агентский договор с ИП. Выплата — в течение 10 рабочих дней после поступления денег от клиента на счёт студии.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="sec">
+  <div class="sec-inner">
+    <div class="cta-box rv">
+      <h2 class="cta-title">Готовы <span>зарабатывать вместе?</span></h2>
+      <p class="cta-sub">Напишите коротко о себе, своём опыте B2B-продаж и в каких сферах работали. Отвечу в течение рабочего дня.</p>
+      <div class="cta-acts">
+        <a href="https://t.me/FutureFlowInc" target="_blank" rel="noopener" class="btn-p">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+          Откликнуться в Telegram
+        </a>
+        <a href="https://wa.me/79661277767" target="_blank" rel="noopener" class="btn-g">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp
+        </a>
+        <a href="mailto:hello@futureflow.ru?subject=Вакансия%3A%20Менеджер%20по%20привлечению%20клиентов" class="btn-g">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Написать на email
+        </a>
+      </div>
+      <div class="cta-contacts">
+        <a href="https://t.me/FutureFlowInc" target="_blank" rel="noopener" class="cc-item">
+          <div class="cc-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg></div>
+          <div>
+            <div class="cc-lbl">Telegram</div>
+            <div class="cc-val">@FutureFlowInc</div>
+          </div>
+        </a>
+        <a href="mailto:hello@futureflow.ru" class="cc-item">
+          <div class="cc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div>
+            <div class="cc-lbl">Email</div>
+            <div class="cc-val">hello@futureflow.ru</div>
+          </div>
+        </a>
+        <a href="tel:+79259040111" class="cc-item">
+          <div class="cc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <div class="cc-lbl">Телефон</div>
+            <div class="cc-val">+7 925 904-01-11</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-copy">
+    © <span id="ftYear">2026</span> FutureFlow · ИП Зайдель Адриан Патрик · <a href="/">futureflow.ru</a>
+  </div>
+</footer>
+
+<script>
+// Theme — sync with main site via the same localStorage key
+(function(){
+  const root = document.documentElement;
+  const saved = localStorage.getItem('ff_theme');
+  if(saved === 'light') root.setAttribute('data-theme','light');
+  const btn = document.getElementById('themeToggle');
+  if(btn){
+    btn.addEventListener('click', () => {
+      const isLight = root.getAttribute('data-theme') === 'light';
+      if(isLight){
+        root.removeAttribute('data-theme');
+        localStorage.setItem('ff_theme','dark');
+      } else {
+        root.setAttribute('data-theme','light');
+        localStorage.setItem('ff_theme','light');
+      }
+    });
+  }
+})();
+
+// Year
+document.getElementById('ftYear').textContent = new Date().getFullYear();
+
+// Nav shrink on scroll
+const nav = document.getElementById('topNav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 40) nav.classList.add('sh');
+  else nav.classList.remove('sh');
+}, {passive: true});
+
+// Reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('vi');
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
